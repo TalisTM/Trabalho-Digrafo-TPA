@@ -128,7 +128,7 @@ public class Digrafo {
         ///validaVertice(v2.getArtigo());
         adj[v1.getAutor()].add(0, a);
         Aresta a2 = new Aresta(a.getV1(), a.getV2());
-        adj[v2.getAutor()].add (0, a2);
+        adj[v2.getAutor()].add(0, a2);
     }
 
 
@@ -143,7 +143,6 @@ public class Digrafo {
         return adj[v];
     }
 
-
     /**
      * Retorna todas as arestas neste dígrafo.
      * @return todas as arestas neste dígrafo, como um Iterable
@@ -156,6 +155,10 @@ public class Digrafo {
             }
         }
         return lista;
+    }
+    
+    public List<Vertice> vertices() {
+        return listVertice;
     }
 
     /**

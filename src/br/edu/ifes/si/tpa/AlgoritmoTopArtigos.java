@@ -10,5 +10,16 @@ package br.edu.ifes.si.tpa;
  * @author Talis
  */
 public class AlgoritmoTopArtigos {
-    
+    private void topArtigos(Digrafo D) {
+        System.out.println("Top artigos");
+        for(Vertice v : D.vertices()) {
+            int qtdCaminho = 0;
+            for(Aresta a : D.arestas()) {
+                if(a.getV2().equals(v)){
+                    qtdCaminho++;
+                }
+            }
+            System.out.printf("%d: %d", v.getArtigo(), qtdCaminho);
+        }
+    }
 }
