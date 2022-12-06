@@ -15,32 +15,35 @@ public class AlgoritmoMenorQtdArtigosLidos {
     private int[] arestaPara;
     private int[] distanciaPara;
     
-    private void menorQuantidadeArtigosLidos(Digrafo D, Vertice artigoOrigem, Vertice artigoDestino) {
-        Fila<Vertice> f = new Fila<Vertice>();
+    public void menorQuantidadeArtigosLidos(Digrafo D, int artigoOrigem, int artigoDestino) {
+        marcado = new boolean[D.V()];
+        arestaPara = new int[D.V()];
+        distanciaPara = new int[D.V()];
+        
+        Fila<Integer> f = new Fila<Integer>();
         
         f.enfileira(artigoOrigem);
-        marcado[artigoOrigem.getArtigo()] = true;
-        distanciaPara[artigoOrigem.getArtigo()] = 0;
-        
+        marcado[artigoOrigem] = true;
+        distanciaPara[artigoOrigem] = 0;
         while(!f.isEmpty()) {
-            Vertice v = f.desenfileira();
+            int v = f.desenfileira();
             
-            for(Aresta a : D.adj(v.getArtigo())) {
-                Vertice x = a.getV2();
-                if(!marcado[x.getArtigo()]) {
-                    arestaPara[x.getArtigo()] = v.getArtigo();
-                    distanciaPara[x.getArtigo()] = distanciaPara[v.getArtigo()] + 1;
-                    marcado[x.getArtigo()] = true;
+            for(Aresta a : D.adj(v)) {
+                int x = a.getV2().getArtigo();
+                if(!marcado[x]) {
+                    arestaPara[x] = v;
+                    distanciaPara[x] = distanciaPara[v] + 1;
+                    marcado[x] = true;
                     f.enfileira(x);
                 }
             }
         }
         
-        System.out.printf("O menor caminho entre %d e %d é de (%d): ", artigoOrigem.getArtigo(), artigoDestino.getArtigo(), distanciaPara[artigoDestino.getArtigo()]);
+        System.out.printf("O menor caminho entre %d e %d é de (%d): ", artigoOrigem, artigoDestino, distanciaPara[artigoDestino]);
         
-        int proximoCaminho = arestaPara[artigoDestino.getArtigo()];
+        int proximoCaminho = arestaPara[artigoDestino];
         System.out.printf("%d", proximoCaminho);
-        for(int i = 0; i < distanciaPara[artigoDestino.getArtigo()]; i++) {
+        for(int i = 0; i < distanciaPara[artigoDestino]; i++) {
             
             proximoCaminho = arestaPara[proximoCaminho];
             System.out.printf("->%d", proximoCaminho);
