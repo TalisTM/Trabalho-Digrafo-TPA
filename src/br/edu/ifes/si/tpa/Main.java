@@ -66,13 +66,14 @@ public class Main {
                 exitMenu(scanner);
                 break;
             case 1:
-                // Algoritmo de Menor Caminho
+                AlgoritmoMenorQtdArtigosLidos algoritmoMenorQtdArtigosLidos = new AlgoritmoMenorQtdArtigosLidos();
+                algoritmoMenorQtdArtigosLidos.run(scanner, D);
                 break;
             case 2:
                 AlgoritmoTodosCaminhos.run(scanner, D);
                 break;
             case 3:
-                // Algoritmo de Top Artigos
+                AlgoritmoTopArtigos.run(scanner, D);
                 break;
             case 4:
                 AlgoritmoTopAutores.run(scanner, D);
@@ -84,21 +85,25 @@ public class Main {
     }
 
     public static void exitMenu(Scanner scanner) {
-        System.out.println("-".repeat(50));
+//        System.out.println("-".repeat(50));
+        System.out.println("--------------------------------");
         System.out.println("Obrigado por utilizar o CACD!");
-        System.out.println("-".repeat(50));
-        try (scanner) {
-            Thread.sleep(1250);
-        } catch (Exception e) {
-            System.out.println("Erro ao aguardar!");
-        } finally {
-        }
+//        System.out.println("-".repeat(50));
+        System.out.println("--------------------------------");
+//        try (scanner) {
+//            Thread.sleep(1250);
+//        } catch (Exception e) {
+//            System.out.println("Erro ao aguardar!");
+//        } finally {
+//        }
     }
 
     public static void invalidOptionMenu() {
-        System.out.println("-".repeat(50));
+//        System.out.println("-".repeat(50));
+        System.out.println("--------------------------------");
         System.out.println("Opção inválida!");
-        System.out.println("-".repeat(50));
+//        System.out.println("-".repeat(50));
+        System.out.println("--------------------------------");
         try {
             Thread.sleep(1250);
         } catch (Exception e) {

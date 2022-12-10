@@ -84,8 +84,8 @@ public class Digrafo {
             int v2 = in.readInt();
             Vertice vertice1 = this.listVertice.get(v1);
             Vertice vertice2 = this.listVertice.get(v2);
-            if (v1 < 0 || v1 >= V) throw new IndexOutOfBoundsException("vértice " + vertice1 + " não está entre 0 e " + (V-1));;;
-            if (v2 < 0 || v2 >= V) throw new IndexOutOfBoundsException("vértice " + vertice2 + " não está entre 0 e " + (V-1));
+//            if (v1 < 0 || v1 >= V) throw new IndexOutOfBoundsException("vértice " + vertice1 + " não está entre 0 e " + (V-1));
+//            if (v2 < 0 || v2 >= V) throw new IndexOutOfBoundsException("vértice " + vertice2 + " não está entre 0 e " + (V-1));
             addAresta(new Aresta(vertice1, vertice2));
         }
     }
@@ -125,7 +125,7 @@ public class Digrafo {
 //        Vertice v2 = a.outroVertice(v1);
         ///validaVertice(v1.getArtigo());
         ///validaVertice(v2.getArtigo());
-        adj[v1.getAutor()].add(0, a);
+        adj[v1.getArtigo()].add(0, a);
 //        Aresta a2 = new Aresta(a.getV1(), a.getV2());;
 //        adj[v2.getAutor()].add(0, a2);
     }
@@ -139,7 +139,6 @@ public class Digrafo {
      */
     public List<Aresta> adj(int v) {
         //validaVertice(v);
-        System.out.printf("%d\n", adj[v]);
         return adj[v];
     }
 
