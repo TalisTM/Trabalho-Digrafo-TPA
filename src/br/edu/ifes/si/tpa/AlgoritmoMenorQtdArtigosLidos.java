@@ -71,11 +71,9 @@ public class AlgoritmoMenorQtdArtigosLidos {
             for(int c : caminho) {
                System.out.printf("%d->", c);
             }
-        
-//            System.out.println("-".repeat(50));
+
             System.out.println("\n--------------------------------");
             System.out.println("\n1 - Continuar\t\t\t0 - Voltar");
-//            System.out.println("-".repeat(50));
             System.out.println("--------------------------------");
             System.out.print("Opção: ");
             option = scanner.nextInt();

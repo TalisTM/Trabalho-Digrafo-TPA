@@ -65,7 +65,7 @@ public class AlgoritmoTodosCaminhos {
             System.out.print("Vértice de destino: ");
             int destino = scanner.nextInt();
 
-            System.out.printf("\nb) Todos os caminhos simples entre %d e %d\n", origem, destino);
+            System.out.printf("\nTodos os caminhos simples entre %d e %d\n", origem, destino);
 
             AlgoritmoTodosCaminhos todosCaminhos = new AlgoritmoTodosCaminhos(D, origem, destino);
 

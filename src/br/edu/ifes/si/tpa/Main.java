@@ -20,7 +20,14 @@ public class Main {
     }
 
     public static void processDigraph(String[] args) {
-        In in = new In("digrafo1.txt");
+        System.out.println("\n--------------------------------");
+        System.out.println("Digite o nome do arquivo txt: \nExemplo: digrafo1");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\n--------------------------------");
+
+        String arquivo = scanner.next();
+
+        In in = new In("./_dados/" + arquivo + ".txt");
         D = new Digrafo(in);
     }
 
