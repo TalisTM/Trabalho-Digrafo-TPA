@@ -14,27 +14,29 @@ import java.util.Scanner;
  */
 public class AlgoritmoTopAutores {
 
-    public static void run(Scanner scanner, Digrafo G) {
+    public static void execute(Scanner scanner, Digrafo D) {
         int option;
         do {
-            System.out.println("d) Top Autores");
+            System.out.println("Algoritmo Top Autores");
             System.out.println("-".repeat(50));
 
-            Map<Vertice, Integer> autoresPorQtdCitacoes = new HashMap<>();
+            Map<Integer, Integer> autoresPorQtdCitacoes  = new HashMap<>();
 
-            for (int artigoLido = 0; artigoLido < G.V(); artigoLido++) {
-                for (Aresta aresta : G.adj(artigoLido)) {
+            for (int artigoLido = 0; artigoLido < D.V(); artigoLido++) {
+                for (Aresta aresta : D.adj(artigoLido)) {
                     Vertice artigoCitado = aresta.getV2();
-                    Vertice autorCitado = G.vertices().get(artigoCitado.getArtigo());
+                    int autorCitado = D.vertices().get(artigoCitado.getArtigo()).getAutor();
                     if (!autoresPorQtdCitacoes.containsKey(autorCitado)) {
-                        autoresPorQtdCitacoes.put(artigoCitado, 1);
-                    } else {
+                        autoresPorQtdCitacoes.put(autorCitado, 1);
+                    }
+                    else {
                         int qtdCitacoes = autoresPorQtdCitacoes.get(autorCitado);
-                        autoresPorQtdCitacoes.put(artigoCitado, qtdCitacoes + 1);
+                        autoresPorQtdCitacoes.put(autorCitado, qtdCitacoes + 1);
                     }
                 }
             }
-            for (Map.Entry<Vertice, Integer> autor : autoresPorQtdCitacoes.entrySet()) {
+
+            for (Map.Entry<Integer, Integer> autor : autoresPorQtdCitacoes.entrySet()) {
                 System.out.println(autor.getKey() + " : " + autor.getValue());
             }
 

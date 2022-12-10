@@ -1,7 +1,6 @@
 package br.edu.ifes.si.tpa;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -56,13 +55,13 @@ public class AlgoritmoMenorQtdArtigosLidos {
         return caminho;
     }
     
-    public void run(Scanner scanner, Digrafo D) {
+    public void execute(Scanner scanner, Digrafo D) {
         int option;
         do {
-            System.out.print("Digite o vértice de origem: ");
+            System.out.print("Vértice de origem: ");
             int origem = scanner.nextInt();
             
-            System.out.print("Digite o vértice de destino: ");
+            System.out.print("Vértice de destino: ");
             int destino = scanner.nextInt();
             
             List<Integer> caminho = AlgoritmoMenorQtdArtigosLidos(D, origem, destino);

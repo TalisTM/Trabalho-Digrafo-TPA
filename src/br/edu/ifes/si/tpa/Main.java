@@ -12,19 +12,6 @@ import java.util.Scanner;
  * @author Talis
  */
 public class Main {
-//    public static void main(String[] args) {
-//        In in = new In("digrafo1.txt");
-//
-//        Digrafo D = new Digrafo(in);
-//
-//
-//        AlgoritmoMenorQtdArtigosLidos algoritmoMenorQtdArtigosLidos = new AlgoritmoMenorQtdArtigosLidos();
-//
-//        algoritmoMenorQtdArtigosLidos.menorQuantidadeArtigosLidos(D, 13, 1);
-//
-////        AlgoritmoTopArtigos.topArtigos(D);
-//    }
-
     private static Digrafo D;
 
     public static void main(String[] args) {
@@ -35,7 +22,6 @@ public class Main {
     public static void processDigraph(String[] args) {
         In in = new In("digrafo1.txt");
         D = new Digrafo(in);
-        //G = new Digrafo(in);
     }
 
     public static void menu() {
@@ -63,53 +49,24 @@ public class Main {
     public static void processOption(Scanner scanner, int option) {
         switch (option) {
             case 0:
-                exitMenu(scanner);
+                System.out.println("Até breve...");
                 break;
             case 1:
                 AlgoritmoMenorQtdArtigosLidos algoritmoMenorQtdArtigosLidos = new AlgoritmoMenorQtdArtigosLidos();
-                algoritmoMenorQtdArtigosLidos.run(scanner, D);
+                algoritmoMenorQtdArtigosLidos.execute(scanner, D);
                 break;
             case 2:
-                AlgoritmoTodosCaminhos.run(scanner, D);
+                AlgoritmoTodosCaminhos.execute(scanner, D);
                 break;
             case 3:
-                AlgoritmoTopArtigos.run(scanner, D);
+                AlgoritmoTopArtigos.execute(scanner, D);
                 break;
             case 4:
-                AlgoritmoTopAutores.run(scanner, D);
+                AlgoritmoTopAutores.execute(scanner, D);
                 break;
             default:
-                invalidOptionMenu();
+                System.out.println("Opção inválida!");
                 break;
-        }
-    }
-
-    public static void exitMenu(Scanner scanner) {
-//        System.out.println("-".repeat(50));
-        System.out.println("--------------------------------");
-        System.out.println("Obrigado por utilizar o CACD!");
-//        System.out.println("-".repeat(50));
-        System.out.println("--------------------------------");
-//        try (scanner) {
-//            Thread.sleep(1250);
-//        } catch (Exception e) {
-//            System.out.println("Erro ao aguardar!");
-//        } finally {
-//        }
-    }
-
-    public static void invalidOptionMenu() {
-//        System.out.println("-".repeat(50));
-        System.out.println("--------------------------------");
-        System.out.println("Opção inválida!");
-//        System.out.println("-".repeat(50));
-        System.out.println("--------------------------------");
-        try {
-            Thread.sleep(1250);
-        } catch (Exception e) {
-            System.out.println("Erro ao aguardar!");
         }
     }
 }
-
-//}

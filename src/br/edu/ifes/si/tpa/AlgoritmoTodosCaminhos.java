@@ -13,38 +13,38 @@ import java.util.Scanner;
  */
 public class AlgoritmoTodosCaminhos {
     private boolean[] noCaminho;
-    private Pilha<Vertice> caminho;
+    private Pilha<Integer> caminho;
     private static int qtdCaminhos;
 
-    public AlgoritmoTodosCaminhos(Digrafo G, Vertice artigoOrigem, Vertice artigoDestino) {
+    public AlgoritmoTodosCaminhos(Digrafo G, Integer artigoOrigem, Integer artigoDestino) {
         noCaminho = new boolean[G.V()];
-        caminho = new Pilha<Vertice>();
+        caminho = new Pilha<Integer>();
         qtdCaminhos = 0;
         dfs(G, artigoOrigem, artigoDestino);
     }
 
-    public void dfs(Digrafo G, Vertice artigoOrigem, Vertice artigoDestino) {
+    public void dfs(Digrafo D, int artigoOrigem, int artigoDestino) {
         caminho.empilha(artigoOrigem);
-        noCaminho[artigoOrigem.getArtigo()] = true;
-        if (artigoOrigem.getArtigo() == artigoDestino.getArtigo()) {
+        noCaminho[artigoOrigem] = true;
+        if (artigoOrigem == artigoDestino) {
             imprimeCaminhoAtual();
             qtdCaminhos++;
         }
         else {
-            for (Aresta a : G.adj(artigoOrigem.getArtigo())) {
+            for (Aresta a : D.adj(artigoOrigem)) {
                 Vertice x = a.getV2();
                 if (!noCaminho[x.getArtigo()]) {
-                    dfs(G, x, artigoDestino);
+                    dfs(D, x.getArtigo(), artigoDestino);
                 }
             }
         }
         caminho.desempilha();
-        noCaminho[artigoOrigem.getArtigo()] = false;
+        noCaminho[artigoOrigem] = false;
     }
 
     public void imprimeCaminhoAtual() {
-        Pilha<Vertice> pilhaInvertida = new Pilha<>();
-        for (Vertice v : caminho) {
+        Pilha<Integer> pilhaInvertida = new Pilha<>();
+        for (Integer v : caminho) {
             pilhaInvertida.empilha(v);
         }
         if (pilhaInvertida.tamanho() >= 1) {
@@ -56,30 +56,24 @@ public class AlgoritmoTodosCaminhos {
         System.out.println();
     }
 
-    public static void run(Scanner scanner, Digrafo G) {
+    public static void execute(Scanner scanner, Digrafo D) {
         int option;
         do {
-            System.out.print("Digite o vértice de origem: ");
+            System.out.print("Vértice de origem: ");
             int origem = scanner.nextInt();
-            
-            Vertice artigoOrigem = null;
-            artigoOrigem.setArtigo(origem);
 
-            System.out.print("Digite o vértice de destino: ");
+            System.out.print("Vértice de destino: ");
             int destino = scanner.nextInt();
 
-            Vertice artigoDestino = null;
-            artigoOrigem.setArtigo(destino);
+            System.out.printf("\nb) Todos os caminhos simples entre %d e %d\n", origem, destino);
 
-            System.out.printf("\nb) Todos os caminhos entre %d e %d\n", artigoOrigem.getArtigo(), artigoDestino.getArtigo());
+            AlgoritmoTodosCaminhos todosCaminhos = new AlgoritmoTodosCaminhos(D, origem, destino);
 
-            AlgoritmoTodosCaminhos todosCaminhos = new AlgoritmoTodosCaminhos(G, artigoOrigem, artigoDestino);
-
-            System.out.println("_".repeat(50));
+            System.out.println("--------------------------------");
             System.out.printf("# Caminhos  = %d\n", qtdCaminhos);
-            System.out.println("-".repeat(50));
+            System.out.println("--------------------------------");
             System.out.println("\n1 - Continuar\t\t\t0 - Voltar");
-            System.out.println("-".repeat(50));
+            System.out.println("--------------------------------");
             System.out.print("Opção: ");
             option = scanner.nextInt();
         } while (option != 0);
